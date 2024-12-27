@@ -5,6 +5,8 @@ use WWW::DuckDuckGo::ZeroClickInfo;
 use WWW::DuckDuckGo::Link;
 use WWW::DuckDuckGo::Icon;
 
+plan 34;
+
 my $icon = WWW::DuckDuckGo::Icon.new('URL' => 'http://i.duck.co/i/4bd98dc2.jpg');
 
 isa-ok($icon, 'WWW::DuckDuckGo::Icon');

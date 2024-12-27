@@ -1,5 +1,5 @@
 {
-  "auth": "zef:raku-communiy-modules",
+  "auth": "zef:raku-community-modules",
   "author": "Alexander Kiryuhin",
   "build-depends": [
   ],
@@ -29,5 +29,5 @@
   ],
   "test-depends": [
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
