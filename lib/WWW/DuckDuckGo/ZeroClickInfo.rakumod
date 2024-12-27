@@ -1,5 +1,3 @@
-use v6;
-
 unit class WWW::DuckDuckGo::ZeroClickInfo;
 
 use WWW::DuckDuckGo::Link;
@@ -23,36 +21,39 @@ has $.redirect;
 has $.related-topics-sections;
 has $.results;
 has $.type;
-has %.type-long-definitions = ( A => 'article',
-				D => 'disambiguation',
-				C => 'category',
-				N => 'name',
-				E => 'exclusive' );
+has %.type-long-definitions =
+  A => 'article',
+  D => 'disambiguation',
+  C => 'category',
+  N => 'name',
+  E => 'exclusive',
+;
 
 method new($result) {
     my $params;
-    if ($result<RelatedTopics>) {
-	$params<related-topics-sections> = {};
+    if $result<RelatedTopics> {
+        $params<related-topics-sections> = {};
         if ($result<RelatedTopics>[0]<Topics>.defined) {
-	    for @($result<RelatedTopics>) {
+            for @($result<RelatedTopics>) {
                 die "Please, go to the module issues page and fill and issue with your searchterm" if $_<Name> eq '_';
                 my @topics;
-		for @($_<Topics>) -> $topic {
-		    @topics.push(WWW::DuckDuckGo::Link.new($topic)) if $topic.WHAT.perl eq 'Hash';
-		}
-		$params<related-topics-sections>{$_<Name>} := @topics;
-	    }
-	} else {
-	    my @topics;
-	    for (@($result<RelatedTopics>)) -> $topic {
+                for @($_<Topics>) -> $topic {
+                    @topics.push(WWW::DuckDuckGo::Link.new($topic)) if $topic.WHAT.perl eq 'Hash';
+                }
+                $params<related-topics-sections>{$_<Name>} := @topics;
+            }
+        }
+        else {
+            my @topics;
+            for (@($result<RelatedTopics>)) -> $topic {
                 @topics.push(WWW::DuckDuckGo::Link.new($topic)) if $topic.WHAT.perl eq 'Hash';
             }
-	    $params<related-topics-sections> := @topics if so @topics;
-	}
+            $params<related-topics-sections> := @topics if so @topics;
+        }
     }
     my @results;
     for (@($result<Results>)) {
-	@results.push(WWW::DuckDuckGo::Link.new($_)) if $_.WHAT.perl eq 'Hash';
+        @results.push(WWW::DuckDuckGo::Link.new($_)) if $_.WHAT.perl eq 'Hash';
     }
     $params<json> = $result;
     $params<results> := @results if so @results;
@@ -85,3 +86,5 @@ method type-long() {
     return if !$!type;
     %!type-long-definitions{$!type};
 }
+
+# vim: expandtab shiftwidth=4

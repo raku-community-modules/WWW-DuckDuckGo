@@ -1,5 +1,3 @@
-use v6;
-
 unit class WWW::DuckDuckGo::Icon;
 
 use URI;
@@ -14,3 +12,5 @@ method new($icon_result) {
     my $width = $icon_result<width> if $icon_result<Width>;
     self.bless(:$url, :$width, :$height);
 }
+
+# vim: expandtab shiftwidth=4

@@ -1,18 +1,33 @@
 {
-    "perl": "6.*",
-    "name" : "WWW::DuckDuckGo",
-    "license" : "Artistic-2.0",
-    "tags": ["Web", "API"],
-    "version" : "0.1.0",
-    "auth" : "zef:Altai-man",
-    "description" : "Bindings to DuckDuckGo search API",
-    "depends" : [ "URI", "HTTP::UserAgent", "JSON::Fast" ],
-    "provides" : {
-        "WWW::DuckDuckGo::Icon" : "lib/WWW/DuckDuckGo/Icon.pm6",
-        "WWW::DuckDuckGo::Link" : "lib/WWW/DuckDuckGo/Link.pm6",
-        "WWW::DuckDuckGo::ZeroClickInfo" : "lib/WWW/DuckDuckGo/ZeroClickInfo.pm6",
-        "WWW::DuckDuckGo" : "lib/WWW/DuckDuckGo.pm6"
-    },
-    "resources": [],
-    "source-url" : "git://github.com/Altai-man/p6-WWW-DuckDuckGo.git"
+  "auth": "zef:raku-communiy-modules",
+  "author": "Alexander Kiryuhin",
+  "build-depends": [
+  ],
+  "depends": [
+    "URI",
+    "HTTP::UserAgent",
+    "JSON::Fast"
+  ],
+  "description": "Bindings to DuckDuckGo search API",
+  "license": "Artistic-2.0",
+  "name": "WWW::DuckDuckGo",
+  "perl": "6.*",
+  "provides": {
+    "WWW::DuckDuckGo": "lib/WWW/DuckDuckGo.rakumod",
+    "WWW::DuckDuckGo::Icon": "lib/WWW/DuckDuckGo/Icon.rakumod",
+    "WWW::DuckDuckGo::Link": "lib/WWW/DuckDuckGo/Link.rakumod",
+    "WWW::DuckDuckGo::ZeroClickInfo": "lib/WWW/DuckDuckGo/ZeroClickInfo.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/raku-community-modules/WWW-DuckDuckGo.git",
+  "tags": [
+    "Web",
+    "API",
+    "DUCKDUCKGO",
+    "SEARCH"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.1.0"
 }

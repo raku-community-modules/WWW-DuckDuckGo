@@ -1,5 +1,3 @@
-use v6;
-
 unit class WWW::DuckDuckGo::Link;
 
 use WWW::DuckDuckGo::Icon;
@@ -21,3 +19,5 @@ method new($link_result) {
     my $text = $link_result<Text>;
     self.bless(:$result, :$first_url, :$icon, :$text);
 }
+
+# vim: expandtab shiftwidth=4
