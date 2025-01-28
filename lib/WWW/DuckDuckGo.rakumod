@@ -27,7 +27,6 @@ method zeroclickinfo_request_base($for_uri, @query_fields) {
     my $query = @query_fields.join(' ');
     $query = uri-escape($query);
     my $uri = URI.new($for_uri);
-    my %params = %($!params);
     # FIXME: when it'll work with Perl 6 URI module;
     # $uri.query_param( q => $query); is much more safe.
     $uri ~= "?q=$query";
@@ -35,8 +34,8 @@ method zeroclickinfo_request_base($for_uri, @query_fields) {
     $uri ~= "&kp=-1" if $!safeoff;
     $uri ~= "&no_redirect=1";
     $!html ?? ($uri ~= "&no_html=0") !! ($uri ~= "&no_html=1");
-    for %params.keys {
-        $uri ~= "&$_=%params{$_}";
+    for $!params.kv -> $k, $v {
+        $uri ~= "&$k=$v";
     };
     $uri
 }
