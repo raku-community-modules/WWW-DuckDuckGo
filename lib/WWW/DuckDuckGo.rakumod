@@ -28,7 +28,7 @@ method zeroclickinfo_request_base($for_uri, @query_fields) {
     $query = uri-escape($query);
     my $uri = URI.new($for_uri);
     my %params = %($!params);
-    # FIXME: when it'll work with Perl 6 URI module;
+    # FIXME: when it'll work with Raku URI module;
     # $uri.query_param( q => $query); is much more safe.
     $uri ~= "?q=$query";
     $uri ~= "&o=json";

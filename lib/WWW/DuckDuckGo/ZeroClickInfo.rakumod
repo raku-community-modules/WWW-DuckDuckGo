@@ -38,7 +38,7 @@ method new($result) {
                 die "Please, go to the module issues page and fill and issue with your searchterm" if $_<Name> eq '_';
                 my @topics;
                 for @($_<Topics>) -> $topic {
-                    @topics.push(WWW::DuckDuckGo::Link.new($topic)) if $topic.WHAT.perl eq 'Hash';
+                    @topics.push(WWW::DuckDuckGo::Link.new($topic)) if $topic.WHAT.raku eq 'Hash';
                 }
                 $params<related-topics-sections>{$_<Name>} := @topics;
             }
@@ -46,14 +46,14 @@ method new($result) {
         else {
             my @topics;
             for (@($result<RelatedTopics>)) -> $topic {
-                @topics.push(WWW::DuckDuckGo::Link.new($topic)) if $topic.WHAT.perl eq 'Hash';
+                @topics.push(WWW::DuckDuckGo::Link.new($topic)) if $topic.WHAT.raku eq 'Hash';
             }
             $params<related-topics-sections> := @topics if so @topics;
         }
     }
     my @results;
     for (@($result<Results>)) {
-        @results.push(WWW::DuckDuckGo::Link.new($_)) if $_.WHAT.perl eq 'Hash';
+        @results.push(WWW::DuckDuckGo::Link.new($_)) if $_.WHAT.raku eq 'Hash';
     }
     $params<json> = $result;
     $params<results> := @results if so @results;
